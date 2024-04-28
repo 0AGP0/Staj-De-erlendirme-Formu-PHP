@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staj Değerlendirme</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url("background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body class="bg-light">
     <div class="container">
@@ -32,11 +40,18 @@
                                 <label for="isyeri_degerlendirmesi">İşyeri Değerlendirmesi:</label>
                                 <select id="isyeri_degerlendirmesi" name="isyeri_degerlendirmesi" class="form-control">
                                     <?php
-                                    // Buraya MySQL sorgusu ekleyerek optionları dinamik olarak oluşturabilirsiniz
+                                    // Buraya MySQL sorgusu 
                                     ?>
                                     <option value="0">Seçiniz</option>
                                     <option value="1">1</option>
-                                    <!-- Diğer optionlar buraya eklenecek -->
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
                                     <option value="10">10</option>
                                 </select>
                             </div>
@@ -48,7 +63,14 @@
                                     ?>
                                     <option value="0">Seçiniz</option>
                                     <option value="1">1</option>
-                                    <!-- Diğer optionlar buraya eklenecek -->
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
                                     <option value="10">10</option>
                                 </select>
                             </div>
@@ -57,12 +79,14 @@
                                     <label for="soru<?php echo $i; ?>">Soru <?php echo $i; ?>:</label>
                                     <select id="soru<?php echo $i; ?>" name="soru<?php echo $i; ?>" class="form-control">
                                         <?php
-                                        // Buraya MySQL sorgusu ekleyerek optionları dinamik olarak oluşturabilirsiniz
+                                        // Buraya MySQL sorgusu
                                         ?>
-                                        <option value="0">Seçiniz</option>
-                                        <option value="1">1</option>
-                                        <!-- Diğer optionlar buraya eklenecek -->
-                                        <option value="3">3</option>
+                                    <option value="0">Seçiniz</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                     </select>
                                 </div>
                             <?php } ?>

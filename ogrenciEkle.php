@@ -43,8 +43,7 @@
                                     <input type="text" id="tc_kimlik_no" name="tc_kimlik_no" class="form-control">
                                 </div>
                             </div>
-                            <!-- Diğer form alanları eklenecek -->
-                            <!-- Örnek olarak birkaç alan ekleyeyim -->
+
 
                             <div class="form-group row">
                                 <label for="ad" class="col-sm-3 col-form-label">Ad:</label>
@@ -58,7 +57,6 @@
                                     <input type="text" id="soyad" name="soyad" class="form-control">
                                 </div>
                             </div>
-                            <!-- Diğer alanlar buraya eklenecek -->
 
                             <div class="form-group row">
     <label for="ogrenci_no" class="col-sm-3 col-form-label">Öğrenci No:</label>

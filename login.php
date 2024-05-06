@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $host = "localhost:3307";  // your host name
+    $host = "localhost:3307";   
     $dbusername = "root";
     $dbpassword = "";
     $dbname = "loginphp";

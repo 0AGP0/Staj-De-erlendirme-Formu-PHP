@@ -206,3 +206,55 @@
     </div>
 </body>
 </html>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Veritabanı bağlantısı
+    $host = "localhost:3307";
+    $dbusername = "root";
+    $dbpassword = "";
+    $dbname = "loginphp";
+    $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Form verilerini al
+    $kayit_no = $_POST['kayit_no'];
+    $basari_durumu = $_POST['basari_durumu'];
+    $tc_kimlik_no = $_POST['tc_kimlik_no'];
+    $ad = $_POST['ad'];
+    $soyad = $_POST['soyad'];
+    $ogrenci_no = $_POST['ogrenci_no'];
+    $sinif = $_POST['sinif'];
+    $cep_tel_no = $_POST['cep_tel_no'];
+    $eposta = $_POST['eposta'];
+    $staj_kodu = $_POST['staj_kodu'];
+    $staj_yeri = $_POST['staj_yeri'];
+    $staj_baslangic_tarihi = $_POST['staj_baslangic_tarihi'];
+    $staj_bitis_tarihi = $_POST['staj_bitis_tarihi'];
+    $staj_evraklari_teslim = isset($_POST['staj_evraklari_teslim']) ? 1 : 0;
+    $zorunlu_staj_yazisi = $_POST['zorunlu_staj_yazisi'];
+    $end300_400_yazisi = $_POST['end300_400_yazisi'];
+    $basvuru_dilekcesi_verildi = isset($_POST['basvuru_dilekcesi_verildi']) ? 1 : 0;
+    $kabul_yazisi_getirildi = isset($_POST['kabul_yazisi_getirildi']) ? 1 : 0;
+    $mustehaklik_belgesi_verildi = isset($_POST['mustehaklik_belgesi_verildi']) ? 1 : 0;
+    $kimlik_fotokopisi_verildi = isset($_POST['kimlik_fotokopisi_verildi']) ? 1 : 0;
+    $staj_degerlendirme_formu_getirildi = isset($_POST['staj_degerlendirme_formu_getirildi']) ? 1 : 0;
+    $staj_raporu_verildi = isset($_POST['staj_raporu_verildi']) ? 1 : 0;
+    $aciklama = $_POST['aciklama'];
+
+    // SQL sorgusu
+    $sql = "INSERT INTO ogrencibilgileri (kayıtNo, basari, tc, ad, soyad, ogrenciNo, sınıf, tel, ePosta, stajKodu, stajYeri, stajBasTarihi, stajBitisTarihi, personeleTeslim, stajYazısı, endYazısı, dilekce, kabulYazısı, mustehaklık, kimlikFoto, stajDegerlendirme, stajRaporu, aciklama) 
+    VALUES ('$kayit_no', '$basari_durumu', '$tc_kimlik_no', '$ad', '$soyad', '$ogrenci_no', '$sinif', '$cep_tel_no', '$eposta', '$staj_kodu', '$staj_yeri', '$staj_baslangic_tarihi', '$staj_bitis_tarihi', '$staj_evraklari_teslim', '$zorunlu_staj_yazisi', '$end300_400_yazisi', '$basvuru_dilekcesi_verildi', '$kabul_yazisi_getirildi', '$mustehaklik_belgesi_verildi', '$kimlik_fotokopisi_verildi', '$staj_degerlendirme_formu_getirildi', '$staj_raporu_verildi', '$aciklama')";
+
+    if ($conn->query($sql) === TRUE) {
+        header("Location: menu.html"); // Başarılı olduğunda yönlendirilecek sayfa
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+?>
+

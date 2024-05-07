@@ -43,7 +43,7 @@
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<option value='" . $row['kayıtNo'] . "'>" . $row['ad'] . " " . $row['soyad'] . "</option>";
+                                            echo "<option value='" . $row['kayıtNo'] . "'>" . $row['ad'] . " " . $row['soyad'] . " " . $row['ogrenciNo'] . "</option>";
                                         }
                                     }
                                     $conn->close();

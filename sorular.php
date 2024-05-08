@@ -28,7 +28,6 @@
                                 <select id="kayitNo" name="kayitNo" class="form-control" required>
                                     <option value="">Öğrenci Seçiniz</option>
                                     <?php
-                                    // Veritabanı bağlantısı
                                     $host = "localhost:3307";
                                     $dbusername = "root";
                                     $dbpassword = "";
@@ -38,7 +37,6 @@
                                         die("Connection failed: " . $conn->connect_error);
                                     }
 
-                                    // Öğrenci listesini veritabanından al
                                     $sql = "SELECT * FROM ogrencibilgileri";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {

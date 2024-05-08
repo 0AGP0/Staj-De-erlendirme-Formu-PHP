@@ -1,3 +1,31 @@
+<?php
+$host = "localhost:3307";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "loginphp";
+$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+if ($conn->connect_error) {
+    die("Bağlantı hatası: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sil_kayitNo'])) {
+    $sil_kayitNo = $_POST['sil_kayitNo'];
+
+    $sql = "DELETE FROM ogrencibilgileri WHERE kayıtNo = '$sil_kayitNo'";
+    
+    if ($conn->query($sql) === TRUE) {
+        echo '<script>alert("Öğrenci başarıyla silindi!"); window.location.href = "ogrenciListesi.php";</script>';
+    } else {
+        echo "Silme işlemi sırasında bir hata oluştu: " . $conn->error;
+    }
+}
+
+$sql = "SELECT * FROM ogrencibilgileri";
+$result = $conn->query($sql);
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,24 +76,11 @@
                                         <th>Staj Değerlendirme Formu</th>
                                         <th>Staj Raporu</th>
                                         <th>Açıklama</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Veritabanı bağlantısı
-                                    $host = "localhost:3307";
-                                    $dbusername = "root";
-                                    $dbpassword = "";
-                                    $dbname = "loginphp";
-                                    $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-                                    if ($conn->connect_error) {
-                                        die("Connection failed: " . $conn->connect_error);
-                                    }
-
-                                    // Verileri çekme sorgusu
-                                    $sql = "SELECT * FROM ogrencibilgileri";
-                                    $result = $conn->query($sql);
-
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
                                             echo "<tr>";
@@ -92,13 +107,12 @@
                                             echo "<td>" . ($row['stajDegerlendirme'] ? 'Getirildi' : 'Getirilmedi') . "</td>";
                                             echo "<td>" . ($row['stajRaporu'] ? 'Verildi' : 'Verilmedi') . "</td>";
                                             echo "<td>" . $row['aciklama'] . "</td>";
+                                            echo "<td><form method='post'><input type='hidden' name='sil_kayitNo' value='" . $row['kayıtNo'] . "'><button type='submit' onclick=\"return confirm('Bu öğrenciyi silmek istediğinizden emin misiniz?')\">Sil</button></form></td>";
                                             echo "</tr>";
                                         }
                                     } else {
-                                        echo "<tr><td colspan='22'>Veri bulunamadı.</td></tr>";
+                                        echo "<tr><td colspan='24'>Veri bulunamadı.</td></tr>";
                                     }
-
-                                    $conn->close();
                                     ?>
                                 </tbody>
                             </table>

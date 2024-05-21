@@ -1,12 +1,5 @@
 <?php
-$host = "localhost:3307";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "loginphp";
-$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
-}
+include "config.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sil_kayitNo'])) {
     $sil_kayitNo = $_POST['sil_kayitNo'];

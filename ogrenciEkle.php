@@ -42,14 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($tc_kimlik_no) || empty($ad) || empty($soyad) || empty($ogrenci_no) || empty($sinif) || empty($cep_tel_no) || empty($eposta) || empty($staj_kodu) || empty($staj_yeri) || empty($staj_baslangic_tarihi) || empty($staj_bitis_tarihi) || empty($zorunlu_staj_yazisi) || empty($end300_400_yazisi) || empty($aciklama)) {
         echo "<script>alert('Lütfen tüm alanları doldurun.');</script>";
     } else {
-        $host = "localhost:3307";
-        $dbusername = "root";
-        $dbpassword = "";
-        $dbname = "loginphp";
-        $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        include "config.php";
 
         $sql = "INSERT INTO ogrencibilgileri (tc, ad, soyad, ogrenciNo, sınıf, tel, ePosta, stajKodu, stajYeri, stajBasTarihi, stajBitisTarihi, personeleTeslim, stajYazısı, endYazısı, dilekce, kabulYazısı, mustehaklık, kimlikFoto, stajDegerlendirme, stajRaporu, aciklama) 
         VALUES ('$tc_kimlik_no', '$ad', '$soyad', '$ogrenci_no', '$sinif', '$cep_tel_no', '$eposta', '$staj_kodu', '$staj_yeri', '$staj_baslangic_tarihi', '$staj_bitis_tarihi', '$staj_evraklari_teslim', '$zorunlu_staj_yazisi', '$end300_400_yazisi', '$basvuru_dilekcesi_verildi', '$kabul_yazisi_getirildi', '$mustehaklik_belgesi_verildi', '$kimlik_fotokopisi_verildi', '$staj_degerlendirme_formu_getirildi', '$staj_raporu_verildi', '$aciklama')";

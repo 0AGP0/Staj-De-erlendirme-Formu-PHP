@@ -36,14 +36,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header("Location: menu.html");
         exit();
     }else{
-        $error = "Yanlış şifre veya isim girildi";
-        
+        echo "<script>alert('Yanlış.');window.location.href = 'index.html';</script>";
     }
 
     $conn->close();
 }
 function test($data){
-    $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
 }

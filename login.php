@@ -22,8 +22,8 @@
     session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = test($_POST['username']);
-    $password = test($_POST['password']);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
    
 
@@ -41,8 +41,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $conn->close();
 }
-function test($data){
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-}
+
 ?>
